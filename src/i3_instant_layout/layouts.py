@@ -663,3 +663,36 @@ class Smart:
             )
         else:
             return Layout_Matrix().get_json(window_count)
+
+@register_layout
+class Layout_MainCenter:
+
+    name = "mainCenter"
+    aliases = ["mc", "vmv"]
+    description = """\
+            One large window in the midle at 50%,
+            all others stacked to the left/right vertically.
+
+            -------------------
+            |  2  |     |  5  |
+            |-----|     |-----|
+            |  3  |  1  |  6  |
+            |-----|     |-----|
+            |  4  |     |  7  |
+            -------------------
+            """
+
+    def get_json(self, window_count):
+        lr = window_count - 1
+        left = math.ceil(lr / 2)
+        right = math.floor(lr / 2)
+        nodes = []
+        if left:
+            nodes.append(node(0.25, 'splith', False, get_stack(left, 'splitv')))
+        nodes.append(node(0.5, 'splitv', True, []))
+        if right:
+            nodes.append(node(0.25, 'splith', False, get_stack(right, 'splitv')))
+        order = list(range(1, left+1)) + [0] + list(range(left+1, left+1+right))
+        print(order)
+        return node(1, 'splith', False, nodes),order
+
