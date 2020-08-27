@@ -350,6 +350,21 @@ but never going below 1/16th of the size.
 
 Falls back to matrix layout above 16 windows.
 
+--------------------------------------------------------------------------------
+
+Layout: mainCenter
+
+Aliases: ['mc', 'vmv']
+One large window in the midle at 50%,
+all others stacked to the left/right vertically.
+
+	-------------------
+	|  2  |     |  5  |
+	|-----|     |-----|
+	|  3  |  1  |  6  |
+	|-----|     |-----|
+	|  4  |     |  7  |
+	-------------------
 
 --------------------------------------------------------------------------------
 
