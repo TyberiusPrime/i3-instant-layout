@@ -41,9 +41,22 @@ Call `i3-instant-layout --help` for full details, or
 
 ## Helpful tips
 
+### How to sort windows
 To get the windows in the right order for your layout of choice,
 first enable the vStack or hStack layout, sort them,
 and the proceed to your layout of choice.
+
+### Border styles
+
+i3-instant-layout must unmap/map the windows (ie. hide them temporarily) for i3 
+to place them at the rigth location.
+Unfortunatly that appears to consume the border style.
+Work around this with a line like this in your i3 config:
+```
+for_window [class="^.*"] border pixel 1
+```
+
+
 
 
 ## Available layouts
