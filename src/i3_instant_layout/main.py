@@ -1,4 +1,5 @@
 import asyncio
+import i3ipc
 import datetime
 import json
 import math
@@ -21,6 +22,23 @@ def append_layout(layout_dict, window_count):
     cmd = ["i3-msg", "append_layout", str(Path(tf.name).absolute())]
     subprocess.check_call(cmd, stdout=subprocess.PIPE)
     tf.close()
+
+
+def nuke_swallow_windows():
+    """Remove swallow windows before changing layout"""
+    to_nuke = set()
+
+    def walk_tree(con):
+        if con.ipc_data.get("swallows", False):
+            to_nuke.add(con.ipc_data["window"])
+        for d in con.descendants():
+            walk_tree(d)
+
+    i3 = i3ipc.Connection()
+    tree = i3.get_tree().find_focused().workspace()
+    walk_tree(tree)
+    for window_id in to_nuke:
+        subprocess.check_call(["xdotool", "windowclose", str(window_id)])
 
 
 def get_window_ids():
@@ -205,6 +223,7 @@ def main():
         query = query[: query.find(" ")]
     for layout_class in layouts.layouts:
         if query == layout_class.name or query in layout_class.aliases:
+            nuke_swallow_windows()
             apply_layout(layout_class(), "--dry-run" in sys.argv)
             count_usage(query)
             sys.exit(0)
