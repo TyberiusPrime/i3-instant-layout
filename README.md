@@ -27,6 +27,7 @@ The big advantage here  is that it needs no 'swallow' definitions whatsoever,
 it's 'instant' - just add milk, eh, press the button.
 
 ## Get started
+i3-instant-layout depends xdotool which can be installed by your package manager (e.g. `sudo apt-get install xdotool` on Debian or Ubuntu)
 
 To get started, install with `pip install i3-instant-layout`, or if you prefer, [pipx](https://github.com/pipxproject/pipx)
 and add this to your i3 config: 
