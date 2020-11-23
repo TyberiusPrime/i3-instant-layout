@@ -28,7 +28,7 @@ it's 'instant' - just add milk, eh, press the button.
 
 ## Get started
 
-To get started, install with `pip install i3-instant-layout`, or if you prefer, [pipx](https://github.com/pipxproject/pipx)
+To get started, install with `pip install i3-instant-layout i3ipc`, or if you prefer, [pipx](https://github.com/pipxproject/pipx)
 and add this to your i3 config: 
 `bindsym $mod+Escape exec "i3-instant-layout --list | rofi -dmenu -i | i3-instant-layout -` (or use the interactive menu of your choice).
 
