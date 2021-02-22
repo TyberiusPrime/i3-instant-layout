@@ -75,6 +75,25 @@ class Layout_hStack:
     def get_json(self, window_count):
         return get_stack(window_count, "splith")
 
+@register_layout
+class Layout_tabbed:
+
+    name = "tabbed"
+    aliases = []
+    description = """\
+            Tabbed
+
+    ---------
+    |       |
+    | 1/2/3 |
+    |       |
+    ---------
+    """
+
+    def get_json(self, window_count):
+        return get_stack(window_count, "tabbed")
+
+
 
 @register_layout
 class Layout_v2Stack:
