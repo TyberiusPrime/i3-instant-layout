@@ -86,6 +86,7 @@ def apply_layout(layout, dry_run=False):
     """Actually turn this workspace into this layout"""
     active = get_active_window()
     windows = get_window_ids()
+    windows = [active] + [x for x in windows if x != active]
     window_count = len(windows)
     # we unmap and map all at once for speed.
     unmap_cmd = [

@@ -256,7 +256,7 @@ class Layout_MainRight:
                 1,
                 "splith",
                 False,
-                [get_stack(window_count - 1, "splitv"), node(0.5, "splitv", True, [])],
+                [get_stack(window_count - 1, "splitv"), node(0.75, "splitv", True, [])],
             ),
             list(range(1, window_count)) + [0],
         )
