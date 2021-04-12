@@ -7,7 +7,7 @@ import subprocess
 import sys
 import tempfile
 from pathlib import Path
-from . import layouts
+from . import layouts, __version__
 
 
 counter_file = Path("~/.local/share/i3-instant-layout/counter.json").expanduser()
@@ -63,7 +63,7 @@ def get_window_ids():
             "--desktop",
             desktop,
             "--class",
-            "",
+            "^.*",
         ]
     ).decode("utf-8", errors="replace")
     return res.strip().split("\n")
@@ -209,6 +209,9 @@ def main():
         print_help()
     elif sys.argv[1] == "--desc":
         print_desc()
+        sys.exit(0)
+    elif sys.argv[1] == "--version":
+        print(__version__)
         sys.exit(0)
     elif sys.argv[1] == "--list":
         list_layouts_in_smart_order()
