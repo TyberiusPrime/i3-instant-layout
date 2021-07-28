@@ -184,6 +184,8 @@ def print_help():
 
     Call with 'name --dry-run' to inspect the generated i3 append_layout compatible json.
 
+    Call with --notification + the name of a layout to apply the layout and show a notification that displays the name of the applied layout
+
     To integrate into i3, add this to your i3/config.
         bindsym $mod+Escape exec "i3-instant-layout --list | rofi -dmenu -i | i3-instant-layout -"
 
@@ -205,6 +207,7 @@ def print_desc():
 
 
 def main():
+    showNotification = False
     if len(sys.argv) == 1 or sys.argv[1] == "--help":
         print_help()
     elif sys.argv[1] == "--desc":
@@ -222,13 +225,19 @@ def main():
         if not query.strip():  # e.g. rofi cancel
             sys.exit(0)
     else:
-        query = sys.argv[1]
+        if sys.argv[1] == "--notification":
+            showNotification = True
+            query = sys.argv[2]
+        else:
+            query = sys.argv[1]
     if " " in query:
         query = query[: query.find(" ")]
     for layout_class in layouts.layouts:
         if query == layout_class.name or query in layout_class.aliases:
             nuke_swallow_windows()
             apply_layout(layout_class(), "--dry-run" in sys.argv)
+            if showNotification:
+                subprocess.check_call(["notify-send", "-t", "2000", "Applied layout", layout_class.name])
             count_usage(query)
             sys.exit(0)
     else:
