@@ -38,7 +38,6 @@ def get_stack_unequal(percentages, split):
 
 @register_layout
 class Layout_vStack:
-
     name = "vStack"
     aliases = ["1col", "1c"]
     description = """\
@@ -59,7 +58,6 @@ class Layout_vStack:
 
 @register_layout
 class Layout_hStack:
-
     name = "hStack"
     aliases = ["1row", "1r"]
     description = """\
@@ -75,9 +73,9 @@ class Layout_hStack:
     def get_json(self, window_count):
         return get_stack(window_count, "splith")
 
+
 @register_layout
 class Layout_tabbed:
-
     name = "tabbed"
     aliases = []
     description = """\
@@ -94,10 +92,8 @@ class Layout_tabbed:
         return get_stack(window_count, "tabbed")
 
 
-
 @register_layout
 class Layout_v2Stack:
-
     name = "v2Stack"
     aliases = ["2col", "2c", "2v"]
     description = """\
@@ -120,7 +116,6 @@ class Layout_v2Stack:
 
 @register_layout
 class Layout_h2Stack:
-
     name = "h2Stack"
     aliases = ["2row", "2r", "2h"]
     description = """\
@@ -141,7 +136,6 @@ class Layout_h2Stack:
 
 @register_layout
 class Layout_v3Stack:
-
     name = "v3Stack"
     aliases = ["3col", "3c", "3v"]
     description = """\
@@ -163,7 +157,6 @@ class Layout_v3Stack:
 
 @register_layout
 class Layout_h3Stack:
-
     name = "h3Stack"
     aliases = ["3row", "3r", "3h"]
     description = """\
@@ -187,7 +180,6 @@ class Layout_h3Stack:
 
 @register_layout
 class Layout_Max:
-
     name = "max"
     aliases = ["maxTabbed"]
     description = """\
@@ -207,7 +199,6 @@ class Layout_Max:
 
 @register_layout
 class Layout_MainLeft:
-
     name = "mainLeft"
     aliases = ["ml", "mv", "MonadTall"]
     description = """\
@@ -234,7 +225,6 @@ class Layout_MainLeft:
 
 @register_layout
 class Layout_MainRight:
-
     name = "mainRight"
     aliases = ["mr", "vm", "MonadTallFlip"]
     description = """\
@@ -264,7 +254,6 @@ class Layout_MainRight:
 
 @register_layout
 class Layout_MainMainVStack:
-
     name = "MainMainVStack"
     aliases = ["mmv"]
     description = """\
@@ -295,7 +284,6 @@ class Layout_MainMainVStack:
 
 @register_layout
 class Layout_MainVStackMain:
-
     name = "MainVStackMain"
     aliases = ["mvm"]
     description = """\
@@ -329,7 +317,6 @@ class Layout_MainVStackMain:
 
 @register_layout
 class Layout_Matrix:
-
     name = "matrix"
     aliases = []
     description = """\
@@ -349,7 +336,6 @@ class Layout_Matrix:
 
 @register_layout
 class Layout_VerticalTileTop:
-
     name = "VerticalTileTop"
     aliases = ["vtt"]
     description = """\
@@ -369,7 +355,8 @@ class Layout_VerticalTileTop:
                     "splitv",
                     False,
                     get_stack_unequal(
-                        [0.33 / (window_count - 1)] * (window_count - 1), "splitv",
+                        [0.33 / (window_count - 1)] * (window_count - 1),
+                        "splitv",
                     ),
                 ),
             ],
@@ -378,7 +365,6 @@ class Layout_VerticalTileTop:
 
 @register_layout
 class Layout_VerticalTileBottom:
-
     name = "VerticalTileBottom"
     aliases = ["vtb"]
     description = """\
@@ -398,7 +384,8 @@ class Layout_VerticalTileBottom:
                         "splitv",
                         False,
                         get_stack_unequal(
-                            [0.33 / (window_count - 1)] * (window_count - 1), "splitv",
+                            [0.33 / (window_count - 1)] * (window_count - 1),
+                            "splitv",
                         ),
                     ),
                     node(0.66, "splitv", True, []),
@@ -534,7 +521,10 @@ class Smart:
 
         def nest_4():
             return node(
-                1, "splith", False, [get_stack(2, "splitv"), get_stack(2, "splitv")],
+                1,
+                "splith",
+                False,
+                [get_stack(2, "splitv"), get_stack(2, "splitv")],
             )
 
         if window_count == 1:
@@ -551,7 +541,12 @@ class Smart:
                 "splith",
                 False,
                 [
-                    node(0.5, "splitv", True, [],),
+                    node(
+                        0.5,
+                        "splitv",
+                        True,
+                        [],
+                    ),
                     node(
                         0.5, "splitv", False, [node(0.5, "split", True, []), nest_3()]
                     ),
@@ -563,7 +558,12 @@ class Smart:
                 "splith",
                 False,
                 [
-                    node(0.5, "splitv", True, [],),
+                    node(
+                        0.5,
+                        "splitv",
+                        True,
+                        [],
+                    ),
                     node(
                         0.5, "splitv", False, [node(0.5, "split", True, []), nest_4()]
                     ),
@@ -575,7 +575,12 @@ class Smart:
                 "splith",
                 False,
                 [
-                    node(0.5, "splitv", True, [],),
+                    node(
+                        0.5,
+                        "splitv",
+                        True,
+                        [],
+                    ),
                     node(0.5, "splitv", False, [nest_2(), nest_4()]),
                 ],
             )
@@ -585,7 +590,12 @@ class Smart:
                 "splith",
                 False,
                 [
-                    node(0.5, "splitv", True, [],),
+                    node(
+                        0.5,
+                        "splitv",
+                        True,
+                        [],
+                    ),
                     node(0.5, "splitv", False, [nest_3(), nest_4()]),
                 ],
             )
@@ -595,7 +605,12 @@ class Smart:
                 "splith",
                 False,
                 [
-                    node(0.5, "splitv", True, [],),
+                    node(
+                        0.5,
+                        "splitv",
+                        True,
+                        [],
+                    ),
                     node(0.5, "splitv", False, [nest_4(), nest_4()]),
                 ],
             )
@@ -621,7 +636,10 @@ class Smart:
                 False,
                 [
                     node(
-                        0.5, "splitv", False, [node(0.5, "splitv", True, []), nest_2()],
+                        0.5,
+                        "splitv",
+                        False,
+                        [node(0.5, "splitv", True, []), nest_2()],
                     ),
                     node(0.5, "splitv", False, [nest_4(), nest_4()]),
                 ],
@@ -633,7 +651,10 @@ class Smart:
                 False,
                 [
                     node(
-                        0.5, "splitv", False, [node(0.5, "splitv", True, []), nest_3()],
+                        0.5,
+                        "splitv",
+                        False,
+                        [node(0.5, "splitv", True, []), nest_3()],
                     ),
                     node(0.5, "splitv", False, [nest_4(), nest_4()]),
                 ],
@@ -645,7 +666,10 @@ class Smart:
                 False,
                 [
                     node(
-                        0.5, "splitv", False, [node(0.5, "splitv", True, []), nest_4()],
+                        0.5,
+                        "splitv",
+                        False,
+                        [node(0.5, "splitv", True, []), nest_4()],
                     ),
                     node(0.5, "splitv", False, [nest_4(), nest_4()]),
                 ],
@@ -656,7 +680,12 @@ class Smart:
                 "splith",
                 False,
                 [
-                    node(0.5, "splitv", False, [nest_2(), nest_4()],),
+                    node(
+                        0.5,
+                        "splitv",
+                        False,
+                        [nest_2(), nest_4()],
+                    ),
                     node(0.5, "splitv", False, [nest_4(), nest_4()]),
                 ],
             )
@@ -666,7 +695,12 @@ class Smart:
                 "splith",
                 False,
                 [
-                    node(0.5, "splitv", False, [nest_3(), nest_4()],),
+                    node(
+                        0.5,
+                        "splitv",
+                        False,
+                        [nest_3(), nest_4()],
+                    ),
                     node(0.5, "splitv", False, [nest_4(), nest_4()]),
                 ],
             )
@@ -676,16 +710,21 @@ class Smart:
                 "splith",
                 False,
                 [
-                    node(0.5, "splitv", False, [nest_4(), nest_4()],),
+                    node(
+                        0.5,
+                        "splitv",
+                        False,
+                        [nest_4(), nest_4()],
+                    ),
                     node(0.5, "splitv", False, [nest_4(), nest_4()]),
                 ],
             )
         else:
             return Layout_Matrix().get_json(window_count)
 
+
 @register_layout
 class Layout_MainCenter:
-
     name = "mainCenter"
     aliases = ["mc", "vmv"]
     description = """\
@@ -707,11 +746,36 @@ class Layout_MainCenter:
         right = math.floor(lr / 2)
         nodes = []
         if left:
-            nodes.append(node(0.25, 'splith', False, get_stack(left, 'splitv')))
-        nodes.append(node(0.5, 'splitv', True, []))
+            nodes.append(node(0.25, "splith", False, get_stack(left, "splitv")))
+        nodes.append(node(0.5, "splitv", True, []))
         if right:
-            nodes.append(node(0.25, 'splith', False, get_stack(right, 'splitv')))
-        order = list(range(1, left+1)) + [0] + list(range(left+1, left+1+right))
+            nodes.append(node(0.25, "splith", False, get_stack(right, "splitv")))
+        order = list(range(1, left + 1)) + [0] + list(range(left + 1, left + 1 + right))
         print(order)
-        return node(1, 'splith', False, nodes),order
+        return node(1, "splith", False, nodes), order
 
+
+@register_layout
+class Layout_MainTop:
+    name = "mainTop"
+    aliases = ["mt"]
+    description = """\
+            One large window to the top at 50%,
+            all others stacked to the right horizontally.
+
+            -------------
+            |           |
+            |     1     |
+            |           |
+            |-----|-----|
+            |  2  |  3  |
+            -------------
+            """
+
+    def get_json(self, window_count):
+        return node(
+            1,
+            "splitv",
+            False,
+            [node(0.5, "splith", True, []), get_stack(window_count - 1, "splith")],
+        )
