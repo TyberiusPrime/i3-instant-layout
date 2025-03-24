@@ -3,6 +3,9 @@
 
 Automatic 'list based' layouts for the [i3](https://i3wm.org) window manager
 
+## Status
+I consider this essentially finished. Since I'm no longer using i3 (I'm on niri these days), there will be no further updates from my side.
+
 ## Animated summary
 ![Demo of i3-instant-layout](https://github.com/TyberiusPrime/i3-instant-layout/raw/master/docs/_static/i3-instant-layout_demo.gif "i3-instant-layout demo")
 
